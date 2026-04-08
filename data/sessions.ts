@@ -13,18 +13,14 @@ export type Session = {
 };
 
 export const sessions: Session[] = [
-  // {
-  //   id: "1",
-  //   title: "生成AIとは何か",
-  //   date: "2026-04-18",
-  //   description:
-  //     "ChatGPTやGemini、画像生成AIなど、いま話題のAIの仕組みと使いどころを解説。",
-  //   body: "初回は GenSpark を使ったポスター作成デモを中心に、AIで「こんなことができるんだ」を体感してもらう回にする予定です。",
-  //   resources: [
-  //     { label: "スライド", url: "#" },
-  //     { label: "GenSpark", url: "https://genspark.ai" },
-  //   ],
-  // },
+  {
+    id: "1",
+    title: "すごいぜ！チャッピー！",
+    date: "2026-04-16",
+    description:
+      "AIと話してみたけど思い通りにならない...そんな経験ありませんか？第1回は、ChatGPTでできることを実演＆体験する回です。",
+    resources: [],
+  },
 ];
 
 export function getSession(id: string): Session | undefined {
