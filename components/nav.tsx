@@ -5,7 +5,8 @@ import Link from "next/link";
 
 const links = [
   { href: "/#about", label: "About" },
-  { href: "/#honest", label: "Thoughts" },
+  { href: "/#sessions", label: "Sessions" },
+  { href: "/#honest", label: "Message" },
   { href: "/#survey", label: "Survey" },
 ];
 
@@ -13,13 +14,13 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 h-14 border-b border-border bg-background/80 backdrop-blur-md">
+    <nav className="fixed inset-x-0 top-0 z-50 h-14 transform-gpu border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-4xl items-center justify-between px-6">
         <Link
           href="/"
           className="text-[14px] font-semibold tracking-[-0.02em]"
         >
-          MusaToku AI Club
+          MUSATOKU AI CLUB
         </Link>
 
         {/* Desktop */}

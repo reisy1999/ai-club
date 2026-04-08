@@ -6,7 +6,7 @@ export function Hero() {
     <section className="relative flex min-h-svh items-center justify-center overflow-hidden px-6 pt-24 pb-20 text-center">
       {/* ── Grid pattern ── */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 transform-gpu will-change-transform"
         style={{
           backgroundImage:
             "linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)",
@@ -16,7 +16,7 @@ export function Hero() {
 
       {/* ── Radial glow ── */}
       <div
-        className="pointer-events-none absolute top-[10%] left-1/2 -translate-x-1/2 size-[700px] opacity-[0.12] blur-[80px] sm:size-[900px]"
+        className="pointer-events-none absolute top-[10%] left-1/2 -translate-x-1/2 size-[700px] transform-gpu will-change-transform opacity-[0.12] blur-[80px] sm:size-[900px]"
         style={{
           background:
             "conic-gradient(from 180deg at 50% 50%, #f5a623 0deg, #e8465a 72deg, #7928ca 144deg, #0072f5 216deg, #00c7b7 288deg, #79ffe1 360deg)",
@@ -24,7 +24,7 @@ export function Hero() {
       />
 
       {/* ── Fade-out edges ── */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_40%,transparent_40%,var(--background)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 transform-gpu will-change-transform bg-[radial-gradient(ellipse_60%_60%_at_50%_40%,transparent_40%,var(--background)_100%)]" />
 
       {/* ── Content ── */}
       <div className="relative flex flex-col items-center gap-8">
@@ -56,10 +56,10 @@ export function Hero() {
             事前アンケート &#8599;
           </a>
           <a
-            href="#about"
+            href="/sessions/1"
             className="inline-flex h-11 items-center rounded-full border border-border bg-card px-7 text-[14px] font-medium text-foreground transition-[border-color,background,transform] duration-150 hover:bg-muted active:scale-[0.98]"
           >
-            詳しく見る &#8599;
+            第1回：4/16（木） &#8599;
           </a>
         </div>
       </div>

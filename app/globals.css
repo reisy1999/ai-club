@@ -109,16 +109,20 @@
   background: linear-gradient(
     90deg,
     #8f8f8f 0%,
-    #8f8f8f 40%,
-    #d4d4d4 50%,
-    #8f8f8f 60%,
+    #8f8f8f 35%,
+    #f5a623 42%,
+    #e8465a 46%,
+    #7928ca 50%,
+    #0072f5 54%,
+    #00c7b7 58%,
+    #8f8f8f 65%,
     #8f8f8f 100%
   );
-  background-size: 200% 100%;
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 4s ease-in-out infinite;
+  animation: shimmer 5s ease-in-out infinite;
 }
 
 @keyframes shimmer {
