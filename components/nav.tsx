@@ -15,8 +15,11 @@ export function Nav() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 h-14 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-full max-w-4xl items-center justify-between px-6">
-        <Link href="/" className="text-sm font-bold tracking-tight">
-          MusaToku <span className="text-teal">AI</span> Club
+        <Link
+          href="/"
+          className="text-[14px] font-semibold tracking-[-0.02em]"
+        >
+          MusaToku AI Club
         </Link>
 
         {/* Desktop */}
@@ -25,7 +28,7 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-md px-3 py-1.5 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="rounded-md px-3 py-1.5 text-[13px] font-medium text-muted-foreground transition-colors duration-100 hover:text-foreground"
             >
               {l.label}
             </a>
@@ -39,13 +42,13 @@ export function Nav() {
           aria-label="Menu"
         >
           <span
-            className={`block h-[1.5px] w-4 rounded-sm bg-foreground transition-transform ${open ? "translate-y-[3.25px] rotate-45" : ""}`}
+            className={`block h-[1.5px] w-4 rounded-sm bg-foreground transition-transform duration-150 ${open ? "translate-y-[3.25px] rotate-45" : ""}`}
           />
           <span
-            className={`block h-[1.5px] w-4 rounded-sm bg-foreground transition-opacity ${open ? "opacity-0" : ""}`}
+            className={`block h-[1.5px] w-4 rounded-sm bg-foreground transition-opacity duration-150 ${open ? "opacity-0" : ""}`}
           />
           <span
-            className={`block h-[1.5px] w-4 rounded-sm bg-foreground transition-transform ${open ? "-translate-y-[3.25px] -rotate-45" : ""}`}
+            className={`block h-[1.5px] w-4 rounded-sm bg-foreground transition-transform duration-150 ${open ? "-translate-y-[3.25px] -rotate-45" : ""}`}
           />
         </button>
       </div>
@@ -58,7 +61,7 @@ export function Nav() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+              className="block rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground"
             >
               {l.label}
             </a>
