@@ -5,7 +5,6 @@ import { Honest } from "@/components/honest";
 import { SessionsList } from "@/components/sessions-list";
 import { SurveyCta } from "@/components/survey-cta";
 import { SiteFooter } from "@/components/site-footer";
-import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
@@ -14,11 +13,8 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <About />
-        <Separator />
         <Honest />
-        <Separator />
         <SessionsList />
-        <Separator />
         <SurveyCta />
       </main>
       <SiteFooter />
