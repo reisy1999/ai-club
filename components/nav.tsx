@@ -4,10 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 
 const links = [
-  { href: "/#about", label: "About" },
-  { href: "/#sessions", label: "Sessions" },
-  { href: "/#honest", label: "Message" },
-  { href: "/#survey", label: "Survey" },
+  { href: "/#sessions", label: "活動記録" },
+  { href: "/#honest", label: "事務局より" },
+  { href: "/#survey", label: "アンケート" },
 ];
 
 export function Nav() {
