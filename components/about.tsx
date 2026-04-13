@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FadeIn } from "@/components/fade-in";
 
 const items = [
@@ -26,7 +25,7 @@ const items = [
 
 export function About() {
   return (
-    <section id="about" className="px-6 pt-10 pb-24">
+    <section id="about" className="px-6 pt-10 pb-10">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <h2 className="mb-12 text-[clamp(1.5rem,3vw,2rem)] font-semibold leading-tight tracking-[-0.03em]">
@@ -61,29 +60,6 @@ export function About() {
           ))}
         </div>
 
-        <FadeIn delay={350}>
-          <Link
-            href="/sessions/1"
-            className="group mt-6 flex items-center justify-between rounded-lg bg-card p-5 shadow-[rgba(0,0,0,0.08)_0px_0px_0px_1px] transition-[box-shadow] duration-150 hover:shadow-[rgba(0,0,0,0.12)_0px_0px_0px_1px]"
-          >
-            <div className="flex items-center gap-3">
-              <span className="flex h-6 items-center rounded-full bg-[#85B7EB]/20 px-2.5 text-[11px] font-semibold text-[#2E7AB8]">
-                第1回
-              </span>
-              <div>
-                <p className="text-[14px] font-semibold tracking-[-0.01em]">
-                  <span className="text-muted-foreground">テーマ：</span>すごいぜ！<span className="text-[#EF9F27]">チャッピー！</span>
-                </p>
-                <p className="text-[12px] text-muted-foreground">
-                  4/16(木) 17:20–18:00 ― 講堂
-                </p>
-              </div>
-            </div>
-            <span className="text-[13px] text-muted-foreground transition-transform duration-150 group-hover:translate-x-0.5">
-              &#8599;
-            </span>
-          </Link>
-        </FadeIn>
       </div>
     </section>
   );

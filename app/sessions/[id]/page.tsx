@@ -112,7 +112,7 @@ export default async function SessionPage({ params }: Props) {
           {session.pains.length > 0 && (
             <section className="mb-10">
               <h2 className="mb-4 text-[clamp(1.1rem,2.5vw,1.35rem)] font-semibold tracking-[-0.02em]">
-                こんな悩みありませんか？
+                事前アンケート Q&A
               </h2>
               <div className="flex flex-col gap-2">
                 {session.pains.map((pain) => (

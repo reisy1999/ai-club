@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新入社員オンボーディングの流れ｜業務手順書</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Mermaid CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #fffaf0;
+      --paper: #fffdf8;
+      --border: #eadfcf;
+      --text: #4d463f;
+      --title: #6b5f52;
+      --accent1: #f7d9c4;
+      --accent2: #d9ead3;
+      --accent3: #d9e8fb;
+      --shadow: rgba(120, 100, 80, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: "Zen Maru Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--paper);
+      padding: 14mm;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 18px var(--shadow);
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+      color: var(--title);
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 18px;
+      color: #7b7268;
+    }
+
+    .phase {
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px var(--shadow);
+      page-break-inside: avoid;
+    }
+
+    .phase.phase1 { background: #fff3ea; }
+    .phase.phase2 { background: #f4fbf1; }
+    .phase.phase3 { background: #f2f8ff; }
+
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      color: var(--title);
+    }
+
+    .mermaid-box {
+      background: rgba(255,255,255,0.75);
+      border-radius: 14px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    ul {
+      margin: 6px 0 0 20px;
+      padding: 0;
+      font-size: 13px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .note {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #fff;
+      border-radius: 12px;
+      font-size: 12px;
+      border: 1px dashed #d9cdbd;
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .page {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .phase {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .mermaid svg {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>🌱 新入社員オンボーディングの流れ</h1>
+    <div class="subtitle">
+      入社初日から1ヶ月目までの標準業務手順書（A4印刷対応）
+    </div>
+
+    <section class="phase phase1">
+      <h2>📅 フェーズ1｜1週目（導入・環境整備）</h2>
+      <div class="mermaid-box">
+        <div class="mermaid">
+flowchart LR
+    A["🏢 入社・受付"] --> B["💻 PC/アカウント設定"]
+    B --> C["👥 チーム紹介"]
+    C --> D["📘 ルール説明"]
+        </div>
+      </div>
+      <ul>
+        <li>🏢 入社手続き、社員証・座席案内、就業規則の説明</li>
+        <li>💻 PC、メール、社内システム、VPNなどの初期設定</li>
+        <li>👥 配属部署メンバーへの紹介、メンター決定</li>
+        <li>📘 勤怠・申請フロー・情報セキュリティルールの説明</li>
+      </ul>
+      <div class="note">
+        初週は「業務を始められる状態を整える」ことを最優先とします。
+      </div>
+    </section>
+
+    <section class="phase phase2">
+      <h2>📈 フェーズ2｜2週目（基礎業務習得）</h2>
+      <div class="mermaid-box">
+        <div class="mermaid">
+flowchart LR
+    A["📚 業務研修"] --> B["📝 手順確認"]
+    B --> C["🤝 OJT開始"]
+    C --> D["💬 振り返り"]
+        </div>
+      </div>
+      <ul>
+        <li>📚 担当業務の基本研修、業務フローの理解</li>
+        <li>📝 標準手順書・マニュアルを用いた実務確認</li>
+        <li>🤝 先輩社員同席でOJTを開始</li>
+        <li>💬 毎日5〜10分の振り返り面談を実施</li>
+      </ul>
+      <div class="note">
+        2週目は「理解」から「実践」へ移行する重要フェーズです。
+      </div>
+    </section>
+
+    <section class="phase phase3">
+      <h2>🚀 フェーズ3｜3〜4週目（実務定着・自走化）</h2>
+      <div class="mermaid-box">
+        <div class="mermaid">
+flowchart LR
+    A["🛠 単独業務開始"] --> B["📊 進捗確認"]
+    B --> C["🎯 目標設定"]
+    C --> D["📝 1ヶ月面談"]
+        </div>
+      </div>
+      <ul>
+        <li>🛠 比較的軽い業務から単独対応を開始</li>
+        <li>📊 上司・メンターによる進捗レビュー</li>
+        <li>🎯 次月の習得目標、担当範囲の設定</li>
+        <li>📝 1ヶ月目面談で課題と成長ポイントを整理</li>
+      </ul>
+      <div class="note">
+        1ヶ月終了時点で、日常業務を一定レベルで自走できる状態を目指します。
+      </div>
+    </section>
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#f7e6d5",
+        primaryTextColor: "#4d463f",
+        primaryBorderColor: "#d8c7b6",
+        lineColor: "#b9b0a6",
+        secondaryColor: "#dff0d8",
+        tertiaryColor: "#e7f0fb",
+        fontFamily: '"Zen Maru Gothic", sans-serif',
+        borderRadius: 12
+      },
+      flowchart: {
+        curve: "basis"
+      }
+    });
+  </script>
+</body>
+</html>

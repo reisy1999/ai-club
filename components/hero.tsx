@@ -46,7 +46,7 @@ export function Hero() {
             <span className="text-border">—</span>
             <span>講堂</span>
           </p>
-          <p className="text-[12px]">事前申込不要・途中参加OK</p>
+          <p className="text-[12px]">事前申込不要・途中参加OK・スマホ参加OK</p>
         </div>
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
