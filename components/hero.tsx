@@ -1,7 +1,14 @@
 import { siteConfig } from "@/data/site";
 import { HeroLogo } from "@/components/hero-logo";
+import { getSessionNumber, getUpcomingSession } from "@/data/sessions";
 
 export function Hero() {
+  const upcoming = getUpcomingSession();
+  const when = upcoming?.info.find((i) => i.label === "日時")?.value;
+  const where = upcoming?.info.find((i) => i.label === "場所")?.value;
+  /** ボタン用の短い日付。"9/7（月）17:00〜" → "9/7（月）" */
+  const shortDate = when?.match(/^[^\d]*\d+\/\d+(（.）)?/)?.[0];
+
   return (
     <section className="relative flex min-h-svh items-center justify-center overflow-hidden px-6 pt-24 pb-20 text-center">
       {/* ── Grid pattern ── */}
@@ -38,16 +45,22 @@ export function Hero() {
           Try it. It&apos;s fun.
         </p>
 
-        <div className="flex flex-col items-center gap-1 text-[13px] text-muted-foreground">
-          <p className="flex items-center gap-2">
-            <span className="text-[11px] font-medium uppercase tracking-[0.08em]">Next</span>
-            <span className="text-border">—</span>
-            <span className="font-mono">4/16(木) 17:20–18:00</span>
-            <span className="text-border">—</span>
-            <span>講堂</span>
-          </p>
-          <p className="text-[12px]">事前申込不要・途中参加OK・スマホ参加OK</p>
-        </div>
+        {upcoming && (
+          <div className="flex flex-col items-center gap-1 text-[13px] text-muted-foreground">
+            <p className="flex flex-wrap items-center justify-center gap-2">
+              <span className="text-[11px] font-medium uppercase tracking-[0.08em]">Next</span>
+              <span className="text-border">—</span>
+              <span className="font-mono">{when}</span>
+              {where && (
+                <>
+                  <span className="text-border">—</span>
+                  <span>{where}</span>
+                </>
+              )}
+            </p>
+            {upcoming.note && <p className="text-[12px]">{upcoming.note}</p>}
+          </div>
+        )}
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           <a
@@ -58,12 +71,14 @@ export function Hero() {
           >
             事前アンケート &#8599;
           </a>
-          <a
-            href="/sessions/1"
-            className="inline-flex h-11 items-center rounded-full border border-border bg-card px-7 text-[14px] font-medium text-foreground transition-[border-color,background,transform] duration-150 hover:bg-muted active:scale-[0.98]"
-          >
-            第1回：4/16（木） &#8599;
-          </a>
+          {upcoming && (
+            <a
+              href={`/sessions/${upcoming.id}`}
+              className="inline-flex h-11 items-center rounded-full border border-border bg-card px-7 text-[14px] font-medium text-foreground transition-[border-color,background,transform] duration-150 hover:bg-muted active:scale-[0.98]"
+            >
+              第{getSessionNumber(upcoming.id)}回{shortDate ? `：${shortDate}` : ""} &#8599;
+            </a>
+          )}
         </div>
       </div>
     </section>

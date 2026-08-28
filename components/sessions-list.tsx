@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FadeIn } from "@/components/fade-in";
-import { sessions } from "@/data/sessions";
+import { sessions, getSessionNumber } from "@/data/sessions";
 
 export function SessionsList() {
   const today = new Date().toISOString().slice(0, 10);
@@ -26,13 +26,13 @@ export function SessionsList() {
         ) : (
           <div className="grid gap-4 sm:grid-cols-2">
             {pastSessions.map((s, i) => {
-              const idx = sessions.findIndex((ss) => ss.id === s.id);
+              const num = getSessionNumber(s.id);
               return (
                 <FadeIn key={s.id} delay={i * 80}>
                   <Link href={`/sessions/${s.id}`} className="block h-full">
                     <div className="h-full rounded-lg bg-card p-5 shadow-[rgba(0,0,0,0.08)_0px_0px_0px_1px] transition-[box-shadow] duration-150 hover:shadow-[rgba(0,0,0,0.12)_0px_0px_0px_1px]">
                       <p className="text-[12px] text-muted-foreground">
-                        第{idx + 1}回
+                        第{num}回
                         {s.date && ` — ${s.date}`}
                       </p>
                       <p className="mt-1.5 text-[14px] font-semibold tracking-[-0.01em]">

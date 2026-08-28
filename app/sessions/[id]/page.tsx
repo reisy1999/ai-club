@@ -3,7 +3,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Nav } from "@/components/nav";
 import { SiteFooter } from "@/components/site-footer";
-import { sessions, getSession } from "@/data/sessions";
+import { SessionDemos } from "@/components/session-demos";
+import { SessionTitle } from "@/components/session-title";
+import { sessions, getSession, getSessionNumber } from "@/data/sessions";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -28,7 +30,7 @@ export default async function SessionPage({ params }: Props) {
   const session = getSession(id);
   if (!session) notFound();
 
-  const idx = sessions.findIndex((s) => s.id === id);
+  const num = getSessionNumber(id);
 
   return (
     <>
@@ -55,19 +57,10 @@ export default async function SessionPage({ params }: Props) {
           {/* Header */}
           <div className="mb-10">
             <span className="mb-3 inline-flex h-6 items-center rounded-full bg-[#85B7EB]/20 px-2.5 text-[11px] font-semibold text-[#2E7AB8]">
-              第{idx + 1}回
+              第{num}回
             </span>
             <h1 className="mt-3 text-[clamp(1.8rem,4vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.04em]">
-              {session.title.split("チャッピー！").length > 1
-                ? session.title.split("チャッピー！").map((part, i, arr) => (
-                    <span key={i}>
-                      {part}
-                      {i < arr.length - 1 && (
-                        <span className="text-[#EF9F27]">チャッピー！</span>
-                      )}
-                    </span>
-                  ))
-                : session.title}
+              <SessionTitle session={session} />
             </h1>
             {session.overview && (
               <p className="mt-4 text-[14px] leading-[1.8] text-muted-foreground">
@@ -106,6 +99,46 @@ export default async function SessionPage({ params }: Props) {
                 </table>
               </div>
             </div>
+          )}
+
+          {/* Audience */}
+          {session.audience && session.audience.length > 0 && (
+            <section className="mb-10">
+              <h2 className="mb-4 text-[clamp(1.1rem,2.5vw,1.35rem)] font-semibold tracking-[-0.02em]">
+                こんな人におすすめ
+              </h2>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {session.audience.map((item, i) => (
+                  <div
+                    key={item}
+                    className="flex h-full items-start gap-2.5 rounded-lg bg-card p-4 shadow-[rgba(0,0,0,0.08)_0px_0px_0px_1px]"
+                  >
+                    <span
+                      className="mt-[7px] inline-block size-[6px] shrink-0 rounded-full"
+                      style={{
+                        backgroundColor: ["#85B7EB", "#ED93B1", "#5DCAA5", "#EF9F27"][i % 4],
+                      }}
+                    />
+                    <p className="text-[13px] leading-[1.65] text-muted-foreground">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Demo gallery */}
+          {session.demos && (
+            <section className="mb-10">
+              <h2 className="mb-2 text-[clamp(1.1rem,2.5vw,1.35rem)] font-semibold tracking-[-0.02em]">
+                こんなのができるよ
+              </h2>
+              <p className="mb-4 text-[13px] leading-relaxed text-muted-foreground">
+                ChatGPTに頼んで作ったHTML単一ファイルの資料サンプルです。タップで原寸プレビューが開きます。
+              </p>
+              <SessionDemos />
+            </section>
           )}
 
           {/* Pains */}

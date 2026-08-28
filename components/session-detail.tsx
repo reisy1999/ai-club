@@ -1,18 +1,21 @@
 import { FadeIn } from "@/components/fade-in";
 import { SessionDemos } from "@/components/session-demos";
-import { sessions } from "@/data/sessions";
+import { SessionTitle } from "@/components/session-title";
+import { getSessionNumber, getUpcomingSession } from "@/data/sessions";
 
 export function SessionDetail() {
-  const session = sessions[0];
+  const session = getUpcomingSession();
   if (!session) return null;
 
+  const num = getSessionNumber(session.id);
+
   return (
-    <section id="session-1" className="px-6 pt-10 pb-24">
+    <section id={`session-${session.id}`} className="px-6 pt-10 pb-24">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <div className="mb-3 flex items-center gap-3">
             <span className="flex h-6 items-center rounded-full bg-[#85B7EB]/20 px-2.5 text-[11px] font-semibold text-[#2E7AB8]">
-              第1回
+              第{num}回
             </span>
             {session.date && (
               <span className="text-[12px] text-muted-foreground">
@@ -21,16 +24,7 @@ export function SessionDetail() {
             )}
           </div>
           <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-semibold leading-tight tracking-[-0.03em]">
-            {session.title.split("チャッピー！").length > 1
-              ? session.title.split("チャッピー！").map((part, i, arr) => (
-                  <span key={i}>
-                    {part}
-                    {i < arr.length - 1 && (
-                      <span className="text-[#EF9F27]">チャッピー！</span>
-                    )}
-                  </span>
-                ))
-              : session.title}
+            <SessionTitle session={session} />
           </h2>
         </FadeIn>
 
@@ -80,20 +74,52 @@ export function SessionDetail() {
           </FadeIn>
         )}
 
+        {/* Audience */}
+        {session.audience && session.audience.length > 0 && (
+          <div className="mt-8">
+            <FadeIn delay={200}>
+              <h3 className="mb-4 text-[clamp(1.1rem,2.5vw,1.35rem)] font-semibold tracking-[-0.02em]">
+                こんな人におすすめ
+              </h3>
+            </FadeIn>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {session.audience.map((item, i) => (
+                <FadeIn key={item} delay={240 + i * 60}>
+                  <div className="flex h-full items-start gap-2.5 rounded-lg bg-card p-4 shadow-[rgba(0,0,0,0.08)_0px_0px_0px_1px]">
+                    <span
+                      className="mt-[7px] inline-block size-[6px] shrink-0 rounded-full"
+                      style={{
+                        backgroundColor: ["#85B7EB", "#ED93B1", "#5DCAA5", "#EF9F27"][
+                          i % 4
+                        ],
+                      }}
+                    />
+                    <p className="text-[13px] leading-[1.65] text-muted-foreground">
+                      {item}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Demo gallery */}
-        <div className="mt-10">
-          <FadeIn delay={320}>
-            <h3 className="mb-2 text-[clamp(1.1rem,2.5vw,1.35rem)] font-semibold tracking-[-0.02em]">
-              こんなのができるよ
-            </h3>
-            <p className="mb-4 text-[13px] leading-relaxed text-muted-foreground">
-              ChatGPTに頼んで作ったHTML単一ファイルの資料サンプルです。タップで原寸プレビューが開きます。
-            </p>
-          </FadeIn>
-          <FadeIn delay={380}>
-            <SessionDemos />
-          </FadeIn>
-        </div>
+        {session.demos && (
+          <div className="mt-10">
+            <FadeIn delay={320}>
+              <h3 className="mb-2 text-[clamp(1.1rem,2.5vw,1.35rem)] font-semibold tracking-[-0.02em]">
+                こんなのができるよ
+              </h3>
+              <p className="mb-4 text-[13px] leading-relaxed text-muted-foreground">
+                ChatGPTに頼んで作ったHTML単一ファイルの資料サンプルです。タップで原寸プレビューが開きます。
+              </p>
+            </FadeIn>
+            <FadeIn delay={380}>
+              <SessionDemos />
+            </FadeIn>
+          </div>
+        )}
 
         {/* Pains */}
         {session.pains.length > 0 && (
